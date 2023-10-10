@@ -3,6 +3,9 @@ name = "rtiny"
 version = "1.0.0"
 authors = ["Mateusz Czarnecki (DemwE)"]
 description = "A simple CLI tool for short urls."
+repository = "https://github.com/DemwE/rtiny"
+license = "GPL-3"
+categories = ["command-line-utilities"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
