@@ -13,7 +13,7 @@ pub struct Response {
     pub code: String,
 }
 
-pub async fn makeitshort(url: &Option<String>) -> Result<Response, Box<dyn Error>> {
+pub async fn request_api(url: &Option<String>) -> Result<Response, Box<dyn Error>> {
     let json_body = Url { input: url.clone() };
 
     // Serialize the struct to a JSON string
