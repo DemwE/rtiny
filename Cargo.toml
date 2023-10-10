@@ -5,6 +5,7 @@ authors = ["Mateusz Czarnecki (DemwE)"]
 description = "A simple CLI tool for short urls."
 repository = "https://github.com/DemwE/rtiny"
 license = "GPL-3"
+readme = "README.md"
 categories = ["command-line-utilities"]
 edition = "2021"
 
