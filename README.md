@@ -12,7 +12,8 @@ A simple CLI tool for short urls.
 
 ```
  Options:
-  -u, --url <URL>  Url to short
-  -h, --help       Print help
-  -V, --version    Print version
+  -u, --url <URL>        Url to short
+  -c, --custom <CUSTOM>  Custom short url
+  -h, --help             Print help
+  -V, --version          Print version
 ```
