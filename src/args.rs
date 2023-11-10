@@ -10,8 +10,8 @@ help_template = "{name} {version} {author-section} {about-with-newline} \n {all-
 )]
 pub struct Args {
     /// Url to short
-    // #[clap(required = true)]
-    #[clap(default_value = "https://www.google.com")]
+    #[clap(required = true)]
     #[clap(short, long)]
     pub url: Option<String>,
+
 }
