@@ -9,12 +9,12 @@ pub struct Response {
     pub long: String,
 }
 
-pub async fn request_api(url: &Option<String>) -> Result<Response, Box<dyn Error>> {
+pub async fn request_api(url: &Option<String>, custom: &Option<String>) -> Result<Response, Box<dyn Error>> {
 
     // Create the reqwest client and send the request
     let client = reqwest::Client::new();
     let post = client
-        .get(&format!("https://csclub.uwaterloo.ca/~phthakka/1pt/addURL.php?url={}", url.as_ref().unwrap()))
+        .get(&format!("https://csclub.uwaterloo.ca/~phthakka/1pt/addURL.php?url={}&cu={}", url.as_ref().unwrap(),custom.as_ref().unwrap_or(&"".to_string())))
         .header("Content-Type", "application/json")
         .send()
         .await?;

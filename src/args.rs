@@ -13,5 +13,7 @@ pub struct Args {
     #[clap(required = true)]
     #[clap(short, long)]
     pub url: Option<String>,
-
+    /// Custom short url
+    #[clap(short, long)]
+    pub custom: Option<String>,
 }
