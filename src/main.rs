@@ -12,7 +12,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = api::request_api(&url).await?;
 
     println!("Original url: {}", response.long);
-    println!("Shorten url: https://gotiny.cc/{}", response.code);
+    println!("Shorten url: https://1pt.co/{}", response.short);
 
     Ok(())
 }
