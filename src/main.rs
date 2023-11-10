@@ -14,9 +14,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = api::request_api(url.as_ref(),custom.as_ref()).await?;
 
     println!("Original url: {}", response.long);
-    if url!= Option::from(response.short.clone()) {
+
+    if custom.as_ref().is_some() && response.short != custom.unwrap() {
+        // If custom is Some(), then print "Custom url is used!".color(Color::Yellow)
         println!("{}", "Custom url is used!".color(Color::Yellow));
     }
+
     println!("Shorten url: https://1pt.co/{}", response.short);
 
     Ok(())
