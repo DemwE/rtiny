@@ -1,6 +1,6 @@
 [package]
 name = "rtiny"
-version = "2.1.0"
+version = "2.1.1"
 authors = ["Mateusz Czarnecki (DemwE)"]
 description = "A simple CLI tool for short urls."
 repository = "https://github.com/DemwE/rtiny"

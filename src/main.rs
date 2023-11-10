@@ -11,7 +11,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let custom = args::Args::parse().custom;
 
     // Run the asynchronous task and await its result
-    let response = api::request_api(&url,&custom).await?;
+    let response = api::request_api(url.as_ref(),custom.as_ref()).await?;
 
     println!("Original url: {}", response.long);
     if url!= Option::from(response.short.clone()) {
