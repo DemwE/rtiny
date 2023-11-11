@@ -27,7 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Check if custom url is used and is accepted by the server
     if args.custom.as_ref().is_some() && response.short != args.custom.unwrap() {
-        println!("{}", "Custom url is used!".color(Color::Yellow));
+        println!("{}", "Custom url is currently used!".color(Color::Yellow));
     }
 
     println!("Shorten url: https://1pt.co/{}", response.short);
