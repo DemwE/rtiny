@@ -1,5 +1,6 @@
 use serde::Deserialize;
 use std::error::Error;
+use log::{debug, error};
 
 /// This module provides a struct `Response` that represents a response from some API.
 ///
@@ -15,7 +16,7 @@ use std::error::Error;
 /// - The `Clone` trait is implemented for `Response` to allow creating clones of the struct.
 /// - The `Deserialize` trait is implemented for `Response` to enable deserialization from a data format such as JSON.
 ///
-#[derive(Clone, Deserialize)]
+#[derive(Clone, Deserialize, Debug)]
 pub struct Response {
     pub status: u32,
     pub message: String,
@@ -58,21 +59,23 @@ pub async fn request_api(url: Option<&String>, custom: Option<&String>) -> Resul
     // Create the reqwest client and send the request
     let client = reqwest::Client::new();
     let url = format_url(url, custom);
-    let post = client
+    debug!("formatted url: {}", url);
+    let response = client
         .get(&url)
         .header("Content-Type", "application/json")
         .send()
         .await?;
 
-    let error_message = if post.status().is_success() {
-        let info = post.text().await?;
+    if response.status().is_success() {
 
-        let parsed: Response = serde_json::from_str(&info)?;
+        debug!("HTTP success: {}", response.status());
 
-        return Ok(parsed);
+        // Parse the response body
+        let response_body: Response = response.json().await?;
+        Ok(response_body)
+
     } else {
-        format!("HTTP error: {}", post.status())
-    };
-
-    Err(Box::new(std::io::Error::new(std::io::ErrorKind::Other, error_message)))
+        error!("HTTP error: {}", response.status());
+        Err(Box::new(std::io::Error::new(std::io::ErrorKind::Other, format!("HTTP error: {}", response.status()))))
+    }
 }

@@ -16,4 +16,7 @@ pub struct Args {
     /// Custom short url
     #[clap(short, long)]
     pub custom: Option<String>,
+    /// Activate debug mode
+    #[clap(short, long)]
+    pub debug: bool,
 }
