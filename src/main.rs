@@ -14,9 +14,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = api::request_api(url.as_ref(),custom.as_ref()).await?;
 
     println!("Original url: {}", response.long);
-
+    
+    // Check if custom url is used and is accepted by the server
     if custom.as_ref().is_some() && response.short != custom.unwrap() {
-        // If custom is Some(), then print "Custom url is used!".color(Color::Yellow)
         println!("{}", "Custom url is used!".color(Color::Yellow));
     }
 
